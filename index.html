@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Happy Girlfriend's Day</title>
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Scipt:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            background: url('background.jpg') no-repeat center center fixed;
+            background-size: cover; /*This makes it stretch nicely */
+            color: pink;
+            overflow: hidden;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 600px;
+            margin: 100px auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 10px;
+        
+        }
+
+        auto {
+            display: none;
+
+        }
+
+        audio {
+            display: none;
+        }
+
+        /* Soft hearts floating */
+        .heart {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 192, 203, 0.3);
+            transform: rotate(45deg);
+            animation: float 8s infinite ease-in;
+            z-index: 1;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: inherit;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: -10px;
+            top: 0;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(45);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.4;
+
+            }
+            100%{
+                
+                transform: translateY(-100vh) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        /* Stylish heading */
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3em;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff99cc, #ffcc00, #66ffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s infinite alternate;
+
+        }
+
+        @keyframes shine {
+            from {
+                filter: brightness(1);
+
+            }
+            to{
+                filter: brightness(1.4);
+
+            }
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay loop>
+        <source src="song.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+
+        <!--Floating hearts-->
+        <script>
+            for (let i = 0; i<25; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.style.left = Math.random() * 8 + 's';
+                heart.style.width = heart.height = Math.random() * 20 + 10 'px';
+                document.body.appendChild(heart);
+            }
+        </script>
+        
+
+    </audio>
+
+    <div class="container">
+        <h1>Happy Girlfriend's Day ❤️</h1>
+        <img src="her_photo.jpg" alt="Her Beautiful Photo">
+        <p>
+            You light up my life in ways words can't explain.
+            Today is your day, and I just want you to know how grateful I am to have you.
+        </p>
+        <p><strong>I love you so much my pookie 💖</strong></p>
+    </div>
+</body>
+</html>
