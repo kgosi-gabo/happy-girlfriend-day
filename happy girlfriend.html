@@ -1,143 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Happy Girlfriend's Day</title>
-    <link href="https://fonts.googleapis.com/css?family=Dancing+Scipt:wght@700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-align: center;
-            background: url('background.jpg') no-repeat center center fixed;
-            background-size: cover; /*This makes it stretch nicely */
-            color: pink;
-            overflow: hidden;
-        }
+  <meta charset="UTF-8">
+  <title>Happy Girlfriend's Day</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background: url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+      color: white;
+    }
 
-        .container {
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 40px;
-            border-radius: 15px;
-            max-width: 600px;
-            margin: 100px auto;
-            position: relative;
-            z-index: 2;
-        }
+    .container {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 40px 20px;
+      border-radius: 20px;
+      max-width: 700px;
+      margin: 60px auto;
+      box-shadow: 0 0 30px rgba(255, 192, 203, 0.6);
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
 
-        img {
-            max-width: 100%;
-            border-radius: 10px;
-        
-        }
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3em;
+      background: linear-gradient(45deg, #ff99cc, #ffcc00, #66ffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+    }
 
-        auto {
-            display: none;
+    .slideshow img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid white;
+      box-shadow: 0 0 10px white;
+      animation: fade 6s infinite;
+    }
 
-        }
+    @keyframes fade {
+      0%, 100% { opacity: 0; }
+      20%, 80% { opacity: 1; }
+    }
 
-        audio {
-            display: none;
-        }
+    .typing {
+      border-right: 2px solid white;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+      animation: typing 6s steps(60, end) forwards, blink 0.7s infinite;
+      font-size: 1.2em;
+      margin: 20px auto;
+    }
 
-        /* Soft hearts floating */
-        .heart {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            background: rgba(255, 192, 203, 0.3);
-            transform: rotate(45deg);
-            animation: float 8s infinite ease-in;
-            z-index: 1;
-        }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
 
-        .heart::before,
-        .heart::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: inherit;
-            border-radius: 50%;
-        }
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
 
-        .heart::before {
-            top: -10px;
-            left: 0;
-        }
+    .love-meter {
+      margin: 30px auto 10px;
+      width: 300px;
+      height: 25px;
+      background: #ddd;
+      border-radius: 20px;
+      overflow: hidden;
+    }
 
-        .heart::after {
-            left: -10px;
-            top: 0;
-        }
+    .love-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #ff69b4, #ff1493);
+      animation: fillBar 4s forwards;
+    }
 
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) rotate(45);
-                opacity: 0;
-            }
-            50% {
-                opacity: 0.4;
+    @keyframes fillBar {
+      to { width: 100%; }
+    }
 
-            }
-            100%{
-                
-                transform: translateY(-100vh) rotate(45deg);
-                opacity: 0;
-            }
-        }
+    .btn {
+      margin-top: 30px;
+      padding: 10px 20px;
+      font-size: 1em;
+      background: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #ff69b4;
+    }
 
-        /* Stylish heading */
-        h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 3em;
-            font-weight: bold;
-            background: linear-gradient(45deg, #ff99cc, #ffcc00, #66ffff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shine 3s infinite alternate;
+    .btn:hover {
+      background: #ff1493;
+    }
 
-        }
+    /* Petals */
+    .petal {
+      position: fixed;
+      top: -10px;
+      width: 15px;
+      height: 15px;
+      background: rgba(255,182,193,0.4);
+      border-radius: 50% 50% 50% 50%;
+      animation: fall linear infinite;
+      z-index: 1;
+    }
 
-        @keyframes shine {
-            from {
-                filter: brightness(1);
-
-            }
-            to{
-                filter: brightness(1.4);
-
-            }
-        }
-    </style>
+    @keyframes fall {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(100vh) rotate(360deg); }
+    }
+  </style>
 </head>
 <body>
-    <audio autoplay loop>
-        <source src="song.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
 
-        <!--Floating hearts-->
-        <script>
-            for (let i = 0; i<25; i++) {
-                const heart = document.createElement('div');
-                heart.className = 'heart';
-                heart.style.left = Math.random() * 8 + 's';
-                heart.style.width = heart.height = Math.random() * 20 + 10 'px';
-                document.body.appendChild(heart);
-            }
-        </script>
-        
+  <audio autoplay loop>
+    <source src="song.mp3" type="audio/mpeg">
+  </audio>
 
-    </audio>
+  <!-- Petals -->
+  <script>
+    for (let i = 0; i < 40; i++) {
+      const petal = document.createElement('div');
+      petal.className = 'petal';
+      petal.style.left = Math.random() * 100 + 'vw';
+      petal.style.animationDuration = 5 + Math.random() * 5 + 's';
+      document.body.appendChild(petal);
+    }
+  </script>
 
-    <div class="container">
-        <h1>Happy Girlfriend's Day ❤️</h1>
-        <img src="her_photo.jpg" alt="her_photo">
-        <p>
-            You light up my life in ways words can't explain.
-            Today is your day, and I just want you to know how grateful I am to have you.
-        </p>
-        <p><strong>I love you so much my pookie 💖</strong></p>
+  <div class="container">
+    <h1>Happy Girlfriend's Day 💖</h1>
+    
+    <!-- Slideshow -->
+    <div class="slideshow">
+      <img src="photo1.jpg" alt="photo1">
+      <img src="photo2.jpg" alt="photo2 style="animation-delay: 2s;">
+      <img src="photo3.jpg" alt="photo3" style="animation-delay: 4s;">
     </div>
+
+    <!-- Typing Message -->
+    <div class="typing">
+      You make my heart smile every single day. I'm so lucky to have you.
+    </div>
+
+    <!-- Love Meter -->
+    <div class="love-meter">
+      <div class="love-fill"></div>
+    </div>
+    <p>Love Meter: 100%</p>
+
+    <!-- Download PDF Love Letter -->
+    <a href="love_letter.pdf" download class="btn">Download My Heart 💌</a>
+  </div>
 </body>
 </html>
