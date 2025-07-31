@@ -11,7 +11,7 @@
       text-align: center;
       background: url('background.jpg') no-repeat center center fixed;
       background-size: cover;
-      color: pink;
+      color: white;
       overflow: hidden;
     }
 
@@ -19,11 +19,11 @@
       background-color: rgba(0, 0, 0, 0.6);
       padding: 40px 20px;
       border-radius: 20px;
-      max-width: 600px;
-      margin: 100px auto;
-      box-shadow: 0 0 20px rgba(255, 192, 203, 0.5);
-      z-index: 2;
+      max-width: 650px;
+      margin: 80px auto;
+      box-shadow: 0 0 30px rgba(255, 192, 203, 0.5);
       position: relative;
+      z-index: 2;
     }
 
     img {
@@ -33,11 +33,6 @@
       border-radius: 50%;
       border: 4px solid white;
       margin-bottom: 20px;
-      box-shadow: 0 0 10px white;
-    }
-
-    audio {
-      display: none;
     }
 
     h1 {
@@ -55,87 +50,111 @@
       to { filter: brightness(1.4); }
     }
 
-    p {
-      font-size: 1.2em;
-      line-height: 1.6;
+    audio {
+      display: none;
     }
 
-    /* Soft hearts floating */
-    .heart {
+    .button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .button:hover {
+      background: #ff85c1;
+    }
+
+    /* Rose petals */
+    .petal {
       position: fixed;
-      width: 20px;
-      height: 20px;
-      background: rgba(255, 192, 203, 0.25);
-      transform: rotate(45deg);
+      width: 30px;
+      height: 30px;
+      background: url('rose_petal.png') no-repeat center center;
+      background-size: contain;
+      pointer-events: none;
       animation: float 10s infinite ease-in;
-      z-index: 0;
-    }
-
-    .heart::before,
-    .heart::after {
-      content: '';
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: inherit;
-      border-radius: 50%;
-    }
-
-    .heart::before {
-      top: -10px;
-      left: 0;
-    }
-
-    .heart::after {
-      left: -10px;
-      top: 0;
+      z-index: 1;
     }
 
     @keyframes float {
       0% {
-        transform: translateY(100vh) rotate(45deg);
+        transform: translateY(0) rotate(0deg);
         opacity: 0;
       }
       50% {
-        opacity: 0.4;
+        opacity: 0.7;
       }
       100% {
-        transform: translateY(-100vh) rotate(45deg);
+        transform: translateY(100vh) rotate(360deg);
         opacity: 0;
       }
+    }
+
+    /* Fun Love Meter */
+    .meter-container {
+      margin: 20px auto 10px;
+      background: #fff;
+      width: 80%;
+      border-radius: 20px;
+      overflow: hidden;
+      height: 20px;
+      box-shadow: 0 0 10px rgba(255,255,255,0.5);
+    }
+
+    .meter-fill {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(to right, red, pink, hotpink);
+      animation: fillMeter 5s forwards;
+    }
+
+    @keyframes fillMeter {
+      to { width: 100%; }
     }
   </style>
 </head>
 <body>
-
-  <!-- Background music -->
   <audio autoplay loop>
     <source src="song.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
-  <!-- Floating hearts script -->
-  <script>
-    for (let i = 0; i < 30; i++) {
-      const heart = document.createElement('div');
-      heart.className = 'heart';
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDelay = Math.random() * 10 + 's';
-      heart.style.width = heart.style.height = Math.random() * 20 + 10 + 'px';
-      document.body.appendChild(heart);
-    }
-  </script>
-
   <div class="container">
     <h1>Happy Girlfriend's Day ❤️</h1>
     <img src="her_photo.jpg" alt="Her Beautiful Photo">
     <p>
-      You light up my life in ways words can't explain.  
-      Every moment with you is like a dream come true.  
-      Thank you for being my everything.
+      You light up my life in ways words can't explain.<br>
+      Today is your day, and I just want you to know how grateful I am to have you.
     </p>
     <p><strong>I love you so much, my pookie 💖</strong></p>
+
+    <!-- Love Meter -->
+    <div class="meter-container">
+      <div class="meter-fill"></div>
+    </div>
+    <p><em>Love Meter: 100% 💘</em></p>
+
+    <!-- PDF Download Button -->
+    <a href="love_letter_updated.pdf" download>
+      <button class="button">Download My Heart 💌</button>
+    </a>
   </div>
 
+  <!-- Petals Animation Script -->
+  <script>
+    for (let i = 0; i < 25; i++) {
+      const petal = document.createElement('div');
+      petal.className = 'petal';
+      petal.style.left = Math.random() * 100 + 'vw';
+      petal.style.animationDelay = Math.random() * 10 + 's';
+      document.body.appendChild(petal);
+    }
+  </script>
 </body>
 </html>
